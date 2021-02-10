@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-4">
                 <div class="withdraw status">
-                    <h5>Withdraw</h5>
+                    <h5>Withdraw</h5> 
                     <h2>$ <span id="currentWithdraw">00</span></h2>
                 </div>
             </div>
@@ -73,12 +73,17 @@
         //deposit button event handler
         const depositBtn = document.getElementById("addDeposit");
         depositBtn.addEventListener("click", function(){
-            const depositNumber = getInputNumber("depositAmount");        
-
-            updateSpanText("currentDeposit", depositNumber);
-            updateSpanText("currentBalance", depositNumber);
+            const depositNumber = getInputNumber("depositAmount");
+            
+            if (depositNumber < 0) {
+                alert("Deposit number cannot be negative");
+            } else {
+                updateSpanText("currentDeposit", depositNumber);
+                updateSpanText("currentBalance", depositNumber);
 
             document.getElementById("depositAmount").value = "";
+            }
+
         })
 
         // withdraw button event handler
